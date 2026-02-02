@@ -15,10 +15,10 @@ Basé sur notre cahier des charges et nos modélisations UML :
     * 👤 **Solo vs IA :** Affrontez une intelligence artificielle (algorithme de décision).
     * 🤝 **Local (1v1) :** Duel sur la même machine.
     * 🌐 **Réseau :** Multijoueur distant via architecture Client/Serveur.
-* [cite_start]**Moteur Physique :** Simulation réaliste de la gravité et calcul de trajectoires paraboliques[cite: 64].
+* **Moteur Physique :** Simulation réaliste de la gravité et calcul de trajectoires paraboliques.
 * **Gameplay Stratégique :**
-    * [cite_start]Apparition de **Bonus aléatoires** (impactant le score ou la trajectoire)[cite: 54].
-    * [cite_start]Condition de victoire au score cible (ex: premier à 100 points)[cite: 24].
+    * Apparition de **Bonus aléatoires** (impactant le score ou la trajectoire).
+    * Condition de victoire au score cible (ex: premier à 100 points).
 
 ## 👥 Membres du groupe
 * **TER Ilyas** (20233771)

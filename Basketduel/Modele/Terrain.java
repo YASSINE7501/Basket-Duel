@@ -10,58 +10,30 @@ public class Terrain {
     public static final double GRAVITE = 9.81;
 
     // Dimensions du terrain
-    /** Largeur totale de la fenêtre de jeu (pixels). */
     private final int largeur;
-
-    /** Hauteur totale de la fenêtre de jeu (pixels). */
     private final int hauteur;
 
     // Limites physiques
-    /** Ordonnée Y du sol (basse limite du terrain). */
     private final int ySol;
-
-    /** Ordonnée Y du plafond (haute limite du terrain). */
     private final int yPlafond;
-
-    /** Abscisse X du mur gauche. */
     private final int xMurGauche;
-
-    /** Abscisse X du mur droit. */
     private final int xMurDroit;
 
     // Coordonnées de spawn du ballon
-    /**
-     * Position X fixe de spawn du ballon (côté gauche).
-     */
     private final int xSpawnBallon;
-
-    /** Position Y fixe de spawn du ballon. */
     private final int ySpawnBallon;
 
     // Zone réservée au panier
-    /**
-     * Le panier est toujours placé dans la moitié droite de l'écran
-     * pour garantir que le tir reste physiquement possible.
-     */
+    //Le panier est toujours placé dans la moitié droite de l'écran pour garantir que le tir reste physiquement possible.
     private final int xMinPanier;
 
     // Marge de sécurité entre entités
-    /**
-     * Distance minimale (pixels) entre le panier et un bonus pour éviter le
-     * chevauchement.
-     */
     private static final int MARGE_SECURITE = 60;
 
     // Générateur aléatoire
     private final Random random;
 
     // Constructeur
-    /**
-     * Crée le terrain avec les dimensions de la fenêtre de jeu.
-     *
-     * largeur: Largeur de la fenêtre de jeu (pixels).
-     * hauteur: Hauteur de la fenêtre de jeu (pixels).
-     */
     public Terrain(int largeur, int hauteur) {
         this.largeur = largeur;
         this.hauteur = hauteur;
@@ -77,12 +49,7 @@ public class Terrain {
 
     // Génération aléatoire du Panier
     /**
-     * Génère un Panier à une position aléatoire dans la moitié droite
-     * de l'écran, à une hauteur atteignable.
-     *
-     * Limites de déplacement du panier transmises en même temps
-     *
-     * return: Un nouveau Panier prêt à être utilisé pour ce tour.
+     * Génère un Panier à une position aléatoire dans la moitié droite de l'écran, à une hauteur atteignable.
      */
     public Panier genererPanier() {
         int marge = Panier.RAYON + 10;
@@ -103,15 +70,7 @@ public class Terrain {
 
     // Génération aléatoire des Bonus
     /**
-     * Génère une liste de bonus répartis aléatoirement dans l'espace
-     * aérien situé entre le joueur et le panier.
-     *
-     * Règle de sécurité : aucun bonus ne peut apparaître à moins de MARGE_SECURITE
-     * pixels du centre du panier.
-     *
-     * panier: Le panier déjà généré pour ce tour.
-     * nombreMax: Nombre maximum de bonus à générer.
-     * return: Liste de Bonus prêts à être utilisés.
+     * Génère une liste de bonus répartis aléatoirement dans l'espace aérien situé entre le joueur et le panier.
      */
     public List<Bonus> genererBonus(Panier panier, int nombreMax) {
         List<Bonus> liste = new ArrayList<>();
@@ -167,9 +126,6 @@ public class Terrain {
     /**
      * Vérifie si le ballon a atteint le sol (tir raté).
      * Condition : le bas du ballon (y + rayon) dépasse ySol.
-     *
-     * ballon: Le ballon en cours de vol.
-     * return: true si le ballon a touché ou dépassé le sol.
      */
     public boolean ballonAtteinSol(Ballon ballon) {
         return (ballon.getY() + Ballon.RAYON) >= ySol;
@@ -177,9 +133,6 @@ public class Terrain {
 
     /**
      * Vérifie si le ballon a quitté les limites latérales du terrain.
-     *
-     * ballon: Le ballon en cours de vol.
-     * return: true si le ballon est sorti par la gauche ou la droite.
      */
     public boolean ballonHorsLimites(Ballon ballon) {
         return ballon.getX() - Ballon.RAYON < xMurGauche
@@ -188,42 +141,34 @@ public class Terrain {
     }
 
     // Getters
-    /** return: Largeur du terrain (pixels). */
     public int getLargeur() {
         return largeur;
     }
 
-    /** return: Hauteur du terrain (pixels). */
     public int getHauteur() {
         return hauteur;
     }
 
-    /** return: Ordonnée Y du sol. */
     public int getYSol() {
         return ySol;
     }
 
-    /** return: Ordonnée Y du plafond. */
     public int getYPlafond() {
         return yPlafond;
     }
 
-    /** return: Abscisse X du mur gauche. */
     public int getXMurGauche() {
         return xMurGauche;
     }
 
-    /** return: Abscisse X du mur droit. */
     public int getXMurDroit() {
         return xMurDroit;
     }
 
-    /** return: Coordonnée X de spawn du ballon. */
     public int getXSpawnBallon() {
         return xSpawnBallon;
     }
 
-    /** return: Coordonnée Y de spawn du ballon. */
     public int getYSpawnBallon() {
         return ySpawnBallon;
     }

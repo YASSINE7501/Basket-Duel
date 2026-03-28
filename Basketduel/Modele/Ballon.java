@@ -15,16 +15,11 @@ public class Ballon {
     // Rayon du ballon, utilisé pour la détection de collision.
     public static final int RAYON = 20;
 
-    // Position X courante du centre du ballon.
+    // Position X,Y courante du centre du ballon.
     private double x;
-
-    // Position Y courante du centre du ballon.
     private double y;
 
-    // Position initiale du tir (x0).
     private double xInitial;
-
-    // Position Y au moment du tir (y0).
     private double yInitial;
 
     // Composante horizontale de la vitesse: vx = v0 * cos(angle).
@@ -34,19 +29,12 @@ public class Ballon {
     // Négatif pour aller "vers le haut" (convention écran Java).
     private double vy;
 
-    // Temps écoulé depuis le début du tir (secondes).
+    // Temps écoulé depuis le début du tir .
     private double t;
 
-    // true si le ballon est actuellement en mouvement (tir en cours).
     private boolean enMouvement;
 
     // Constructeur
-    /**
-     * Crée un ballon positionné à sa position de spawn standard.
-     *
-     * xSpawn: Coordonnée X du point de spawn du ballon.
-     * ySpawn: Coordonnée Y du point de spawn du ballon.
-     */
     public Ballon(double xSpawn, double ySpawn) {
         this.x = xSpawn;
         this.y = ySpawn;
@@ -120,11 +108,6 @@ public class Ballon {
      * Indique si le ballon est en collision avec une cible circulaire.
      * La collision est avérée si la distance entre les centres est
      * inférieure ou égale à la somme des rayons.
-     *
-     * xCible: Coordonnée X du centre de la cible.
-     * yCible: Coordonnée Y du centre de la cible.
-     * rayonCible: Rayon de la hitbox circulaire de la cible (pixels).
-     * On retourne true si collision détectée.
      */
     public boolean estEnCollisionAvec(double xCible, double yCible, int rayonCible) {
         return distanceA(xCible, yCible) <= (RAYON + rayonCible);
@@ -134,9 +117,6 @@ public class Ballon {
     /**
      * Remet le ballon à sa position de spawn et stoppe son mouvement.
      * Appelé après chaque fin de tir (panier marqué, sol atteint, etc.)
-     *
-     * xSpawn: Coordonnée X du point de spawn.
-     * ySpawn: Coordonnée Y du point de spawn.
      */
     public void reinitialiser(double xSpawn, double ySpawn) {
         this.x = xSpawn;
@@ -150,54 +130,41 @@ public class Ballon {
     }
 
     /** Getters et Setters */
-
-    /** return: Position X courante du centre du ballon. */
     public double getX() {
         return x;
     }
 
-    /** return: Position Y courante du centre du ballon. */
     public double getY() {
         return y;
     }
 
-    /** return: Composante horizontale de la vitesse (vx). */
     public double getVx() {
         return vx;
     }
 
-    /** return: Composante verticale de la vitesse (vy). */
     public double getVy() {
         return vy;
     }
 
-    /** return: Temps écoulé depuis le début du tir (secondes). */
     public double getT() {
         return t;
     }
 
-    /** return: true si le ballon est en mouvement. */
     public boolean isEnMouvement() {
         return enMouvement;
     }
 
-    /**
-     * Force l'arrêt du mouvement du ballon (ex : collision avec le sol).
-     * enMouvement: false pour arrêter le ballon.
-     */
+    //Force l'arrêt du mouvement du ballon (ex : collision avec le sol).
     public void setEnMouvement(boolean enMouvement) {
         this.enMouvement = enMouvement;
     }
 
-    /** Positionne directement le ballon. */
     public void setPosition(double x, double y) {
         this.x = x;
         this.y = y;
     }
 
-    /**
-     * Sert a debuger et a tracer le comportement du
-     */
+    //Sert a debuger et a tracer le comportement du code
     @Override
     public String toString() {
         return String.format("Ballon[x=%.1f, y=%.1f, vx=%.2f, vy=%.2f, t=%.3f, enMouvement=%b]",

@@ -1,10 +1,8 @@
 package Modele;
 
 /**
- * Types:
  * BONUS (effets positifs): POINTS_BONUS, TRAJECTOIRE_AIDE
- * MALUS (effets négatifs): POINTS_MALUS, TRAJECTOIRE_GENE, VITESSE_PANIER,
- * MURE_OBSTACLE
+ * MALUS (effets négatifs): POINTS_MALUS, TRAJECTOIRE_GENE, VITESSE_PANIER, MURE_OBSTACLE
  */
 public class Bonus {
 
